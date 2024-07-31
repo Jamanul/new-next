@@ -34,6 +34,10 @@ const Navbar = () => {
         {
             pathName:"/post",
             title:"post"
+        },
+        {
+            pathName: "/meals",
+            title: "meals"
         }
         
     ]

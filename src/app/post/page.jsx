@@ -1,10 +1,8 @@
 import React from 'react';
+import { posts } from '../services/postApi';
+import Link from 'next/link';
 
-const posts = async()=>{
-    const res = await fetch('https://jsonplaceholder.typicode.com/posts')
-    const data = await res.json()
-    return data
-}
+
 
 const page = async () => {
     const postsData = await posts()
@@ -19,6 +17,7 @@ const page = async () => {
                     {
                         post.body
                     }
+                  <Link href={`post/${post.id}`}>  <button className="btn bg-red-600">see more</button></Link>
                 </div>)
             }
         </div>
