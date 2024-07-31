@@ -31,6 +31,10 @@ const Navbar = () => {
             pathName: "/dashboard",
             title: "dashboard"
         },
+        {
+            pathName:"/post",
+            title:"post"
+        }
         
     ]
     const handler = ()=>{

@@ -2,7 +2,9 @@ import Link from 'next/link';
 import React from 'react';
 
 const BlogsPage = () => {
+  //console.log(name)
     return (
+     
         <div>
             this is the blogs page
            <div className="grid grid-cols-3 gap-5"> {
