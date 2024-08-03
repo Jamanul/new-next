@@ -1,4 +1,6 @@
 "use client"
+import { signOut, useSession } from 'next-auth/react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import React from 'react';
@@ -6,6 +8,8 @@ import React from 'react';
 const Navbar = () => {
     const pathName = usePathname()
     const router = useRouter()
+    const session =useSession()
+    console.log(session)
     const links =[
         {
             pathName: "/",
@@ -55,7 +59,14 @@ const Navbar = () => {
                 links?.map(link=><Link className={`${pathName===link.pathName && "text-yellow-500"}  `} key={link.title} href={link.pathName}>{link.title}</Link>)
             }
           </ul>
-          <button onClick={handler}>Login</button>
+          {
+            session.status==="authenticated" ? <button onClick={()=> signOut()}>log Out</button> : <Link href={"/api/auth/signin"}><button onClick={handler}>Login</button></Link>
+          } 
+          {
+            session.status==="authenticated" ? <div><h2>{session?.data?.user?.type}</h2>
+            <Image height={50} width={50} src={session?.data?.user?.image}/>
+            </div> : ''
+          }
         </nav>
         </div>
     );
