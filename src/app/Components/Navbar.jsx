@@ -67,6 +67,7 @@ const Navbar = () => {
             <Image height={50} width={50} src={session?.data?.user?.image}/>
             </div> : ''
           }
+           <Link href={"/api/auth/signup"}><button >signup</button></Link>
         </nav>
         </div>
     );
